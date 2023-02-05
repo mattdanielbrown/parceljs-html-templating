@@ -387,34 +387,6 @@ summary {
   line-height: 1.5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :where(input[type="file"])::-webkit-file-upload-button {
-    --_bg: var(--_bg-dark);
-    --_text: var(--_text-dark);
-    --_border: var(--_border-dark);
-    --_accent: var(--_accent-dark);
-    --_highlight: var(--_highlight-dark);
-    --_input-well: var(--_input-well-dark);
-    --_ink-shadow: var(--_ink-shadow-dark);
-    --_shadow-depth: var(--_shadow-depth-dark);
-    --_shadow-color: var(--_shadow-color-dark);
-    --_shadow-strength: var(--_shadow-strength-dark);
-  }
-
-  :where(button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]), :where(input[type="file"])::file-selector-button {
-    --_bg: var(--_bg-dark);
-    --_text: var(--_text-dark);
-    --_border: var(--_border-dark);
-    --_accent: var(--_accent-dark);
-    --_highlight: var(--_highlight-dark);
-    --_input-well: var(--_input-well-dark);
-    --_ink-shadow: var(--_ink-shadow-dark);
-    --_shadow-depth: var(--_shadow-depth-dark);
-    --_shadow-color: var(--_shadow-color-dark);
-    --_shadow-strength: var(--_shadow-strength-dark);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   :where(input[type="file"])::-webkit-file-upload-button {
     --_transition: var(--_transition-motion-ok);
@@ -578,13 +550,6 @@ form {
   border-radius: .5ch;
 }
 
-@media (prefers-color-scheme: dark) {
-  form {
-    background: #353b41;
-    border: 1px solid #484f56;
-  }
-}
-
 .fluid-flex {
   flex-wrap: wrap;
   place-content: center;
@@ -625,7 +590,7 @@ form {
   overflow: hidden;
 }
 
-.navigation-menu {
+.navigation-menu, .button-list, ul.buttons {
   margin: unset;
   padding: unset;
   width: 100%;
@@ -636,7 +601,7 @@ form {
   display: flex;
 }
 
-.navigation-menu li {
+.navigation-menu li, .button-list li, ul.buttons li {
   margin: unset;
   padding: unset;
   width: 100%;
@@ -645,12 +610,12 @@ form {
 }
 
 @media screen and (min-width: 560px) {
-  .navigation-menu {
+  .navigation-menu, .button-list, ul.buttons {
     flex-flow: wrap;
     justify-content: space-between;
   }
 
-  .navigation-menu li {
+  .navigation-menu li, .button-list li, ul.buttons li {
     width: auto;
     margin: 0;
     display: inline-flex;
@@ -759,9 +724,14 @@ nav * {
 }
 
 #mobile-navigation-menu-control {
+  z-index: 101;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
   border: none;
   transition: background-color .15s, outline-color .15s;
+  box-shadow: none !important;
+  padding: .25em !important;
 }
 
 #mobile-navigation-menu-control svg {
@@ -798,6 +768,12 @@ nav * {
 
 #mobile-navigation-menu-control[aria-expanded="true"] .menu-icon-bottom-line {
   transform: translate3d(-10px, -10px, 0)rotate(-45deg);
+}
+
+.navigation-menu-button-icon {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
 }
 
 .navigation-menu li a, .navigation-menu li a:link, .navigation-menu li a:visited {
@@ -1035,6 +1011,10 @@ body > footer:last-of-type p {
   padding: 0;
   font-size: small;
   line-height: 1;
+}
+
+html {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 h1, h2, h3, h4, h5, h6 {
